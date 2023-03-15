@@ -6,14 +6,18 @@ plugins {
 }
 
 android {
-    namespace 'com.smartdev.libraries.resource'
+    namespace 'com.smartdev.libraries.movie'
     compileSdk 33
 
-    flavorDimensions "version"
-
     defaultConfig {
-        buildConfigField 'String', 'API_URL', '"http://www.omdbapi.com/"'
+        minSdk 24
+        targetSdk 33
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
+
+    flavorDimensions "version"
 
     productFlavors {
         dev {
@@ -25,22 +29,10 @@ android {
         }
     }
 
-    defaultConfig {
-        minSdk 24
-        targetSdk 33
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
-    }
-
     buildTypes {
         release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-
-        debug {
             minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 
@@ -55,6 +47,9 @@ android {
 }
 
 dependencies {
+    implementation project(path: ':libraries:network')
+    implementation project(path: ':libraries:resource')
     implementation deps.hilt_android
     kapt deps.hilt_compiler
+    kapt deps.moshi.codegen
 }

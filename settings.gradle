@@ -24,3 +24,5 @@ include ':libraries:network'
 include ':libraries:resource'
 
 include ':features:core'
+include ':libraries:movie'
+include ':features:movie'

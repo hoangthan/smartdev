@@ -78,6 +78,7 @@ dependencies {
     implementation deps.hilt_android
 
     implementation project(path: ':features:core')
+    implementation project(path: ':features:movie')
 }
 
 kapt {
