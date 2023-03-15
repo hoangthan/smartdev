@@ -1,0 +1,54 @@
+plugins {
+    id 'kotlin-kapt'
+    id 'com.android.library'
+    id 'dagger.hilt.android.plugin'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.smartdev.data.core'
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 33
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    flavorDimensions "version"
+
+    productFlavors {
+        dev {
+            dimension "version"
+        }
+
+        prod {
+            dimension "version"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    api deps.coroutine
+    api deps.hilt_android
+    kapt deps.hilt_compiler
+    testImplementation deps.junit
+}

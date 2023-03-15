@@ -1,0 +1,85 @@
+plugins {
+    id 'kotlin-kapt'
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'dagger.hilt.android.plugin'
+    id 'com.google.dagger.hilt.android'
+}
+
+android {
+    namespace 'com.smartdev.assessment'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.smartdev.assessment"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    flavorDimensions "version"
+
+    productFlavors {
+        dev {
+            dimension "version"
+        }
+
+        prod {
+            dimension "version"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kapt {
+        generateStubs = true
+    }
+
+    hilt {
+        enableExperimentalClasspathAggregation = true
+    }
+
+    packagingOptions {
+        resources.excludes.add("META-INF/*")
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+}
+
+dependencies {
+    implementation deps.coil
+    implementation deps.splash
+    implementation deps.view_pager
+    implementation deps.android_core.values()
+    kapt deps.hilt_compiler
+    implementation deps.hilt_android
+
+    implementation project(path: ':features:core')
+}
+
+kapt {
+    correctErrorTypes true
+}

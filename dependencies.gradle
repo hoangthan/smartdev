@@ -1,0 +1,89 @@
+//region BuildConfig and BuildVersion
+def build_versions = [:]
+build_versions.min_sdk = 26
+build_versions.compile_sdk = 31
+build_versions.target_sdk = 31
+build_versions.build_tools = "29.0.3"
+ext.build_versions = build_versions
+//endregion
+
+//region DependencyVersion
+ext.deps = [:]
+def versions = [:]
+versions.coil = '2.2.2'
+versions.view_pager = '1.0.0'
+versions.splash = '1.0.0-beta02'
+versions.core_ktx = '1.9.0'
+versions.app_compat = '1.6.1'
+versions.material = '1.8.0'
+versions.coroutine = "1.6.4"
+versions.hilt = '2.45'
+versions.moshi = "1.14.0"
+versions.retrofit = "2.9.0"
+versions.okhttp = "5.0.0-alpha.2"
+versions.lifecycle_version = "2.5.1"
+versions.fragment = "1.5.5"
+versions.work_version = "2.8.0"
+versions.junit = "4.13.2"
+versions.mockito = "3.2.0"
+ext.versions = versions
+//endregion
+
+//region Dependency
+def deps = [:]
+deps.coil = "io.coil-kt:coil:$versions.coil"
+deps.splash = "androidx.core:core-splashscreen:$versions.splash"
+deps.view_pager = "androidx.viewpager2:viewpager2:$versions.view_pager"
+
+def android_core = [:]
+android_core.core_ktx = "androidx.core:core-ktx:$versions.core_ktx"
+android_core.app_compat = "androidx.appcompat:appcompat:$versions.app_compat"
+android_core.material = "com.google.android.material:material:$versions.material"
+android_core.fragment = "androidx.fragment:fragment-ktx:$versions.fragment"
+deps.android_core = android_core
+
+deps.coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutine"
+
+deps.hilt_android = "com.google.dagger:hilt-android:$versions.hilt"
+deps.hilt_compiler = "com.google.dagger:hilt-compiler:$versions.hilt"
+
+def moshi = [:]
+moshi.core = "com.squareup.moshi:moshi:$versions.moshi"
+moshi.kotlin = "com.squareup.moshi:moshi-kotlin:$versions.moshi"
+moshi.adapter = "com.squareup.moshi:moshi-adapters:$versions.moshi"
+moshi.codegen = "com.squareup.moshi:moshi-kotlin-codegen:$versions.moshi"
+deps.moshi = moshi
+
+def retrofit = [:]
+retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
+retrofit.moshi = "com.squareup.retrofit2:converter-moshi:$versions.retrofit"
+deps.retrofit = retrofit
+
+def okhttp = [:]
+okhttp.core = "com.squareup.okhttp3:okhttp:$versions.okhttp"
+okhttp.logging = "com.squareup.okhttp3:logging-interceptor:$versions.okhttp"
+deps.okhttp = okhttp
+
+def viewmodel = [:]
+viewmodel.lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:$versions.lifecycle_version"
+viewmodel.view_model_ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle_version"
+viewmodel.view_model_state = "androidx.lifecycle:lifecycle-viewmodel-savedstate:$versions.lifecycle_version"
+deps.viewmodel = viewmodel
+
+deps.work_manager = "androidx.work:work-runtime-ktx:$versions.work_version"
+
+deps.junit =  "junit:junit:$versions.junit"
+deps.mockito =  "org.mockito.kotlin:mockito-kotlin:$versions.mockito"
+
+ext.deps = deps
+//endregion
+
+//region HandleRepository
+static def addRepos(RepositoryHandler handler) {
+    handler.google()
+    handler.mavenCentral()
+    handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+}
+
+ext.addRepos = this.&addRepos
+//endregion

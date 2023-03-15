@@ -1,0 +1,17 @@
+<resources>
+    <dimen name="margin_medium">8dp</dimen>
+    <dimen name="margin_regular">16dp</dimen>
+
+    <dimen name="padding_medium">8dp</dimen>
+    <dimen name="padding_regular">16dp</dimen>
+
+    <dimen name="team_avatar_size">64dp</dimen>
+    <dimen name="icon_regular">24dp</dimen>
+    <dimen name="icon_big">36dp</dimen>
+
+    <dimen name="corner_radius_regular">8dp</dimen>
+    <dimen name="corner_radius_medium">4dp</dimen>
+
+    <dimen name="text_size_regular">12sp</dimen>
+    <dimen name="text_size_title">16sp</dimen>
+</resources>

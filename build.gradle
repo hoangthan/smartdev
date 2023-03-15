@@ -1,0 +1,19 @@
+apply plugin: 'kotlin-kapt'
+apply from: 'dependencies.gradle'
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.2.2"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:2.45"
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
