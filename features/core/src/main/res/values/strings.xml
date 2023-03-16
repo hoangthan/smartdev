@@ -1,10 +1,5 @@
 <resources>
-    <string name="app_name">ZujuAssessment</string>
-    <string name="upcoming">Upcoming</string>
-    <string name="previous">Previous</string>
+    <string name="app_name">SmartDevAssessment</string>
     <string name="place_holder">Place Holder</string>
-    <string name="selected_team">Selected team:</string>
-    <string name="select_your_team">Selected your team</string>
-    <string name="reset">Reset</string>
-    <string name="all_team">All Team</string>
+    <string name="enter_at_least_3_char">Enter at least 3 characters</string>
 </resources>

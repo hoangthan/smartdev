@@ -3,10 +3,10 @@
         <item name="windowSplashScreenBackground">@color/dark_background</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
         <item name="windowSplashScreenAnimationDuration">@integer/m3_sys_motion_duration_extra_long4</item>
-        <item name="postSplashScreenTheme">@style/Theme.ZujuAssessment</item>
+        <item name="postSplashScreenTheme">@style/Theme.SmartDevAssessment</item>
     </style>
 
-    <style name="Theme.ZujuAssessment" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+    <style name="Theme.SmartDevAssessment" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <item name="colorPrimary">@color/red</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>

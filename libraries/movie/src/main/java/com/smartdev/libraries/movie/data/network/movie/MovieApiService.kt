@@ -8,6 +8,9 @@ interface MovieApiService {
 
     @GET("/")
     suspend fun getMovie(
-        @Query("s") keyword: String, @Query("page") page: Int = 1
+        @Query("s") keyword: String,
+        @Query("page") page: Int,
+        @Query("type") type: String = "movie",
+        @Query("apikey") apiKey: String = "b9bd48a6"
     ): ResultWrapperDto
 }

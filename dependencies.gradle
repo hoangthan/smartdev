@@ -26,6 +26,8 @@ versions.fragment = "1.5.5"
 versions.work_version = "2.8.0"
 versions.junit = "4.13.2"
 versions.mockito = "3.2.0"
+versions.paging = "3.1.0"
+
 ext.versions = versions
 //endregion
 
@@ -43,6 +45,7 @@ android_core.fragment = "androidx.fragment:fragment-ktx:$versions.fragment"
 deps.android_core = android_core
 
 deps.coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutine"
+deps.paging =  "androidx.paging:paging-runtime-ktx:$versions.paging"
 
 deps.hilt_android = "com.google.dagger:hilt-android:$versions.hilt"
 deps.hilt_compiler = "com.google.dagger:hilt-compiler:$versions.hilt"

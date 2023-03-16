@@ -14,10 +14,15 @@ class MovieDataSource @Inject constructor(
     private val movieApiSource: MovieApiService
 ) : MovieRepository {
 
-    override fun getMovie(keyword: String): Flow<Either<GetMovieError, List<Movie>>> {
+    override fun getMovie(keyword: String, page: Int): Flow<Either<GetMovieError, List<Movie>>> {
         return flow {
-            val result = movieApiSource.getMovie(keyword)
-            val movies = result.movies.map { it.toDomain() }
+            val result = movieApiSource.getMovie(keyword = keyword, page = page)
+            val movies = result.movies
+                .filterNot {
+                    //TODO: To make the UI more beautiful, we gonna ignore the item has no poster value temporary
+                    it.poster.isNullOrBlank() || it.poster == "N/A"
+                }
+                .map { it.toDomain() }
             emit(Either.Right(movies))
         }
     }

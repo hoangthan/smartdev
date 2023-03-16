@@ -23,10 +23,11 @@ class GetMovieUseCase @Inject constructor(
             return flowOf(Either.Left(GetMovieError.InvalidKeyword))
         }
 
-        return movieRepository.getMovie(param.keyword)
+        return movieRepository.getMovie(param.keyword, param.page)
     }
 
     data class GetMovieParam(
         val keyword: String,
+        val page: Int = 1,
     )
 }

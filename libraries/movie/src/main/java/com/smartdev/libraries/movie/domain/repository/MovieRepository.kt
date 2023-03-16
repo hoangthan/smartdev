@@ -6,5 +6,5 @@ import com.smartdev.libraries.movie.domain.usecase.getMovie.Movie
 import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {
-    fun getMovie(keyword: String): Flow<Either<GetMovieError, List<Movie>>>
+    fun getMovie(keyword: String, page: Int): Flow<Either<GetMovieError, List<Movie>>>
 }

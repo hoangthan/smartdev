@@ -15,7 +15,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ZujuAssessment"
+rootProject.name = "SmartDevAssessment"
 
 include ':app'
 

@@ -10,7 +10,7 @@ data class MovieDto(
     val imdbID: String,
 
     @Json(name = "Poster")
-    val poster: String,
+    val poster: String?,
 
     @Json(name = "Title")
     val title: String,

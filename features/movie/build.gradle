@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace 'com.zuju.features.movie'
+    namespace 'com.smartdev.features.movie'
     compileSdk 33
 
     defaultConfig {
@@ -58,5 +58,6 @@ dependencies {
     implementation project(path: ':libraries:movie')
     implementation project(path: ':features:core')
     implementation deps.hilt_android
+    implementation deps.paging
     kapt deps.hilt_compiler
 }
