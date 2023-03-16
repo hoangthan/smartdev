@@ -1,5 +1,6 @@
 package com.smartdev.data.network
 
+import arrow.retrofit.adapter.either.EitherCallAdapterFactory
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -34,6 +35,12 @@ class NetworkModule {
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
         return loggingInterceptor
+    }
+
+    @Provides
+    @Singleton
+    fun provideEitherCallAdapter(): EitherCallAdapterFactory {
+        return EitherCallAdapterFactory.create()
     }
 
     @Provides

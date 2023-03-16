@@ -1,6 +1,6 @@
 package com.smartdev.libraries.movie.domain.repository
 
-import com.smartdev.data.core.model.Either
+import arrow.core.Either
 import com.smartdev.libraries.movie.domain.usecase.getMovie.GetMovieError
 import com.smartdev.libraries.movie.domain.usecase.getMovie.Movie
 import kotlinx.coroutines.flow.Flow

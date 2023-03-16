@@ -9,6 +9,7 @@ import com.smartdev.features.movie.MovieListViewModel.MovieListViewEvent
 import com.smartdev.features.movie.movielist.MoviePagingSource
 import com.smartdev.libraries.movie.domain.usecase.getMovie.GetMovieUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.*
@@ -22,16 +23,16 @@ class MovieListViewModel @Inject constructor(
 
     private val pageConfig = PagingConfig(pageSize = 10)
     private val _keywordState = MutableStateFlow("Marvel")
-    val keywordState = _keywordState.asStateFlow()
 
-    val pagingData = keywordState
-        .sample(TIME_GAP_SEARCH)
+    val pagingData = _keywordState
+        .debounce(TIME_GAP_SEARCH)
         .distinctUntilChanged()
         .flatMapLatest {
             val pagingSource = MoviePagingSource(getMovieUseCase, it)
             Pager(pageConfig) { pagingSource }.flow
         }
         .cachedIn(viewModelScope)
+        .flowOn(Dispatchers.IO)
 
     private fun updateKeyword(keyword: String) {
         _keywordState.update { keyword }
@@ -48,6 +49,6 @@ class MovieListViewModel @Inject constructor(
     }
 
     companion object {
-        private const val TIME_GAP_SEARCH = 300L
+        private const val TIME_GAP_SEARCH = 500L
     }
 }

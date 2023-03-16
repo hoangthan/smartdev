@@ -51,6 +51,8 @@ dependencies {
     api deps.moshi.values()
     api deps.retrofit.values()
     api deps.okhttp.values()
-    implementation deps.hilt_android
+    api deps.hilt_android
     kapt deps.hilt_compiler
+    api deps.arrow.retrofit_core
+    api deps.arrow.retrofit_converter
 }

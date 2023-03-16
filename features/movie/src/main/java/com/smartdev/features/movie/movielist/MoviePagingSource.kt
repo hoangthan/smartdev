@@ -2,7 +2,7 @@ package com.smartdev.features.movie.movielist
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.smartdev.data.core.model.Either
+import arrow.core.Either
 import com.smartdev.libraries.movie.domain.usecase.getMovie.GetMovieUseCase
 import kotlinx.coroutines.flow.first
 
@@ -28,12 +28,12 @@ class MoviePagingSource constructor(
 
         return when (val result = getMovieUseCase(useCaseParam).first()) {
             is Either.Right -> {
-                val movies = result.data.map { it.toUi() }
+                val movies = result.value.map { it.toUi() }
                 val prevKey = if (pageNumber == 1) null else pageNumber - 1
                 val nextKey = if (movies.isEmpty()) null else pageNumber + 1
                 LoadResult.Page(data = movies, prevKey = prevKey, nextKey = nextKey)
             }
-            is Either.Left -> LoadResult.Error(result.err)
+            is Either.Left -> LoadResult.Error(result.value)
         }
     }
 }

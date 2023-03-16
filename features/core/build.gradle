@@ -54,10 +54,10 @@ android {
 }
 
 dependencies {
+    api project(path: ':libraries:core')
     api deps.coil
     api deps.viewmodel.values()
     api deps.android_core.values()
-    api project(path: ':libraries:core')
     api deps.hilt_android
     kapt deps.hilt_compiler
 }

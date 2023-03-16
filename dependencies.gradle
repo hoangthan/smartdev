@@ -10,14 +10,15 @@ ext.build_versions = build_versions
 //region DependencyVersion
 ext.deps = [:]
 def versions = [:]
-versions.coil = '2.2.2'
-versions.view_pager = '1.0.0'
-versions.splash = '1.0.0-beta02'
-versions.core_ktx = '1.9.0'
-versions.app_compat = '1.6.1'
-versions.material = '1.8.0'
+versions.arrow = "1.1.5"
+versions.coil = "2.2.2"
+versions.view_pager = "1.0.0"
+versions.splash = "1.0.0-beta02"
+versions.core_ktx = "1.9.0"
+versions.app_compat = "1.6.1"
+versions.material = "1.8.0"
 versions.coroutine = "1.6.4"
-versions.hilt = '2.45'
+versions.hilt = "2.45"
 versions.moshi = "1.14.0"
 versions.retrofit = "2.9.0"
 versions.okhttp = "5.0.0-alpha.2"
@@ -44,8 +45,15 @@ android_core.material = "com.google.android.material:material:$versions.material
 android_core.fragment = "androidx.fragment:fragment-ktx:$versions.fragment"
 deps.android_core = android_core
 
+def arrow = [:]
+arrow.core = "io.arrow-kt:arrow-core:$versions.arrow"
+arrow.core_jvm = "io.arrow-kt:arrow-core-jvm:$versions.arrow"
+arrow.retrofit_core = "io.arrow-kt:arrow-core-retrofit:$versions.arrow"
+arrow.retrofit_converter = "io.arrow-kt:arrow-core-retrofit:$versions.arrow"
+deps.arrow = arrow
+
 deps.coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutine"
-deps.paging =  "androidx.paging:paging-runtime-ktx:$versions.paging"
+deps.paging = "androidx.paging:paging-runtime-ktx:$versions.paging"
 
 deps.hilt_android = "com.google.dagger:hilt-android:$versions.hilt"
 deps.hilt_compiler = "com.google.dagger:hilt-compiler:$versions.hilt"
@@ -75,8 +83,8 @@ deps.viewmodel = viewmodel
 
 deps.work_manager = "androidx.work:work-runtime-ktx:$versions.work_version"
 
-deps.junit =  "junit:junit:$versions.junit"
-deps.mockito =  "org.mockito.kotlin:mockito-kotlin:$versions.mockito"
+deps.junit = "junit:junit:$versions.junit"
+deps.mockito = "org.mockito.kotlin:mockito-kotlin:$versions.mockito"
 
 ext.deps = deps
 //endregion
@@ -85,7 +93,6 @@ ext.deps = deps
 static def addRepos(RepositoryHandler handler) {
     handler.google()
     handler.mavenCentral()
-    handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
 }
 
 ext.addRepos = this.&addRepos

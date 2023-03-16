@@ -3,15 +3,11 @@ package com.smartdev.libraries.movie.data.network.movie.dto
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
-
 @JsonClass(generateAdapter = true)
-data class ResultWrapperDto(
+data class MovieErrorDto(
     @Json(name = "Response")
-    val response: String?,
+    val response: String,
 
-    @Json(name = "Search")
-    val movies: List<MovieDto> = listOf(),
-
-    @Json(name = "totalResults")
-    val totalResults: String?,
+    @Json(name = "Error")
+    val error: String,
 )

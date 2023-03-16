@@ -1,6 +1,6 @@
 package com.smartdev.data.core.usecase
 
-import com.smartdev.data.core.model.Either
+import arrow.core.Either
 import kotlinx.coroutines.flow.Flow
 
 interface FlowUseCase<PARAM, L : Throwable, R> {

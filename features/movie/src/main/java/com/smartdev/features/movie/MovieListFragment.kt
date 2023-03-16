@@ -3,9 +3,11 @@ package com.smartdev.features.movie
 import android.view.LayoutInflater
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
+import androidx.paging.LoadState
 import androidx.paging.PagingData
 import com.smartdev.features.core.base.fragments.BaseFragment
 import com.smartdev.features.core.base.utils.observeFlow
+import com.smartdev.features.core.base.utils.showToast
 import com.smartdev.features.movie.MovieListViewModel.MovieListViewEvent
 import com.smartdev.features.movie.databinding.FragmentMovieListBinding
 import com.smartdev.features.movie.movielist.MovieListAdapter
@@ -32,6 +34,13 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>() {
     override fun initViewListener() {
         binding.editText.doOnTextChanged { text, _, _, _ ->
             onSearchKeywordChanged(text.toString())
+        }
+
+        movieListAdapter.addLoadStateListener {
+            val refresh = it.refresh
+            if (refresh is LoadState.Error) {
+                showToast(refresh.error.message ?: refresh.error.toString())
+            }
         }
     }
 

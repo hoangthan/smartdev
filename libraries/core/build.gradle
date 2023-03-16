@@ -49,6 +49,8 @@ android {
 dependencies {
     api deps.coroutine
     api deps.hilt_android
+    api deps.arrow.core
+    api deps.arrow.core_jvm
     kapt deps.hilt_compiler
     testImplementation deps.junit
 }

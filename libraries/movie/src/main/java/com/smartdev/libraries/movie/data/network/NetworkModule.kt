@@ -1,5 +1,6 @@
 package com.smartdev.libraries.movie.data.network
 
+import arrow.retrofit.adapter.either.EitherCallAdapterFactory
 import com.smartdev.libraries.movie.data.network.movie.MovieApiService
 import com.smartdev.libraries.resource.NetworkResource
 import dagger.Module
@@ -18,11 +19,13 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideMovieApiService(
-        converterFactory: Converter.Factory,
         okHttpClient: OkHttpClient,
+        converterFactory: Converter.Factory,
+        eitherCallAdapterFactory: EitherCallAdapterFactory,
     ): MovieApiService {
         return Retrofit.Builder()
             .client(okHttpClient)
+            .addCallAdapterFactory(eitherCallAdapterFactory)
             .addConverterFactory(converterFactory)
             .baseUrl(NetworkResource.BASE_URL)
             .build()
