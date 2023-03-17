@@ -6,7 +6,6 @@ import com.smartdev.libraries.movie.data.network.movie.dto.MovieDto
 import com.smartdev.libraries.movie.data.network.movie.dto.toDomain
 import com.smartdev.libraries.movie.domain.repository.MovieRepository
 import com.smartdev.libraries.movie.domain.usecase.getMovie.GetMovieError
-import com.smartdev.libraries.movie.domain.usecase.getMovie.GetMovieError.InvalidParam
 import com.smartdev.libraries.movie.domain.usecase.getMovie.Movie
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -26,7 +25,9 @@ class MovieDataSource @Inject constructor(
                         .filterNot(::shouldTakeMovie)
                         .map { it.toDomain() }
                 }
-                .mapLeft { InvalidParam(it.error) }
+                .mapLeft {
+                    GetMovieError.UnExpected(it.toString())
+                }
 
             emit(result)
         }

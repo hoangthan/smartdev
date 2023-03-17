@@ -21,18 +21,15 @@ class MovieListViewModel @Inject constructor(
     private val getMovieUseCase: GetMovieUseCase
 ) : BaseViewModel<MovieListViewEvent>() {
 
-    private val pageConfig = PagingConfig(pageSize = 10)
+    //To make to UI become contentful, load the init content by Marvel keyword temporary
     private val _keywordState = MutableStateFlow("Marvel")
 
-    val pagingData = _keywordState
-        .debounce(TIME_GAP_SEARCH)
-        .distinctUntilChanged()
-        .flatMapLatest {
+    private val pageConfig = PagingConfig(pageSize = 10)
+
+    val pagingData = _keywordState.debounce(TIME_GAP_SEARCH).flatMapLatest {
             val pagingSource = MoviePagingSource(getMovieUseCase, it)
             Pager(pageConfig) { pagingSource }.flow
-        }
-        .cachedIn(viewModelScope)
-        .flowOn(Dispatchers.IO)
+        }.cachedIn(viewModelScope).flowOn(Dispatchers.IO)
 
     private fun updateKeyword(keyword: String) {
         _keywordState.update { keyword }
@@ -49,6 +46,6 @@ class MovieListViewModel @Inject constructor(
     }
 
     companion object {
-        private const val TIME_GAP_SEARCH = 500L
+        private const val TIME_GAP_SEARCH = 400L
     }
 }

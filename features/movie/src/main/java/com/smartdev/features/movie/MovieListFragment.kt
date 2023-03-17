@@ -1,8 +1,10 @@
 package com.smartdev.features.movie
 
 import android.view.LayoutInflater
+import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
+import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import androidx.paging.PagingData
 import com.smartdev.features.core.base.fragments.BaseFragment
@@ -32,20 +34,22 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>() {
     }
 
     override fun initViewListener() {
-        binding.editText.doOnTextChanged { text, _, _, _ ->
+        binding.edtMovieName.doOnTextChanged { text, _, _, _ ->
             onSearchKeywordChanged(text.toString())
-        }
-
-        movieListAdapter.addLoadStateListener {
-            val refresh = it.refresh
-            if (refresh is LoadState.Error) {
-                showToast(refresh.error.message ?: refresh.error.toString())
-            }
         }
     }
 
     override fun initObserver() {
         observeFlow(viewModel.pagingData, ::onDataLoaded)
+        movieListAdapter.addLoadStateListener(::onLoadStateChanged)
+    }
+
+    private fun onLoadStateChanged(state: CombinedLoadStates) {
+        val refresh = state.refresh
+        binding.loadingView.isVisible = refresh is LoadState.Loading
+        if (refresh is LoadState.Error) {
+            showToast(refresh.error.message ?: refresh.error.toString())
+        }
     }
 
     private fun onDataLoaded(pagingData: PagingData<MovieUi>) {

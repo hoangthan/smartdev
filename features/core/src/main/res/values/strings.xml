@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">SmartDevAssessment</string>
     <string name="place_holder">Place Holder</string>
-    <string name="enter_at_least_3_char">Enter at least 3 characters</string>
+    <string name="enter_movie_name">Enter movie name: (Marvel, Avatar...)</string>
 </resources>
