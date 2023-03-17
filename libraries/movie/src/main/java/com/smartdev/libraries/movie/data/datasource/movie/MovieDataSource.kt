@@ -20,14 +20,8 @@ class MovieDataSource @Inject constructor(
             val response = movieApiSource.getMovie(keyword = keyword, page = page)
 
             val result = response
-                .map { result ->
-                    result.movies
-                        .filterNot(::shouldTakeMovie)
-                        .map { it.toDomain() }
-                }
-                .mapLeft {
-                    GetMovieError.UnExpected(it.toString())
-                }
+                .map { it.movies.filterNot(::shouldTakeMovie).map { movie -> movie.toDomain() } }
+                .mapLeft { GetMovieError.UnExpected(it.toString()) }
 
             emit(result)
         }

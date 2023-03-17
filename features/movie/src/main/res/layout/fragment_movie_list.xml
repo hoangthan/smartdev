@@ -43,12 +43,10 @@
         app:layout_constraintTop_toBottomOf="@+id/filledTextField"
         tools:itemCount="10" />
 
-    <ProgressBar
+    <com.smartdev.features.core.base.views.LoadingView
         android:id="@+id/loadingView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:indeterminateTint="@color/red"
-        android:progressTint="@color/red"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

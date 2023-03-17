@@ -52,4 +52,7 @@ dependencies {
     implementation deps.hilt_android
     kapt deps.hilt_compiler
     kapt deps.moshi.codegen
+
+    testImplementation deps.junit
+    testImplementation deps.mockito
 }

@@ -72,7 +72,6 @@ android {
 dependencies {
     implementation deps.coil
     implementation deps.splash
-    implementation deps.view_pager
     implementation deps.android_core.values()
     kapt deps.hilt_compiler
     implementation deps.hilt_android

@@ -14,6 +14,9 @@ versions.view_pager = '1.0.0'
 versions.app_compat = '1.6.1'
 versions.material = '1.8.0'
 
+### Functional programming support
+versions.arrow = '1.1.5'
+
 #### New API support splash screen with animation
 versions.splash = '1.0.0-beta02'
 
@@ -36,9 +39,6 @@ versions.okhttp = "5.0.0-alpha.2"
 #### Support delegate viewmodel, view lifecycle scope management
 versions.lifecycle_version = "2.5.1"
 versions.fragment = "1.5.5"
-
-#### Use for manage task, background task, periodic task, one time task
-versions.work_version = "2.8.0"
 
 #### Use for unit test
 versions.junit = "4.13.2"
