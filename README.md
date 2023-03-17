@@ -1,3 +1,7 @@
+## Demo
+
+![img.png](img.png)
+
 ## Architecture
 - Apply modularization, divide the app to small part called 'module' to be reuse easily. Each part is a module. Each module is independent and serves a clear purpose
 - Apply clean architecture in every module to make the source code easy to read, maintain
