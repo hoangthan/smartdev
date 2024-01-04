@@ -34,7 +34,9 @@ class MoviePagingSource(
                 LoadResult.Page(data = movies, prevKey = prevKey, nextKey = nextKey)
             }
 
-            is Either.Left -> LoadResult.Error(Throwable(result.value.msg))
+            is Either.Left -> {
+                LoadResult.Error(result.value)
+            }
         }
     }
 

@@ -73,7 +73,7 @@ class MovieDataSourceTest {
             whenever(movieApiService.getMovie(movieName, page)).thenReturn(Either.Left(ioError))
 
             val actualResult = movieRepository.getMovie(movieName, page).first()
-            val expectedResult = Either.Left(GetMovieError.UnExpected(ioError.toString()))
+            val expectedResult = Either.Left(GetMovieError.UnExpectedError(ioError.toString()))
 
             assertTrue(actualResult == expectedResult)
         }

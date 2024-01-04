@@ -16,7 +16,7 @@ class GetMovieUseCase @Inject constructor(
 
     override fun invoke(param: GetMovieParam): Flow<Either<GetMovieError, List<Movie>>> {
         if (param.keyword.trim().length < MINIMUM_LENGTH) {
-            return flowOf(Either.Left(GetMovieError.KeywordTooShort))
+            return flowOf(Either.Left(GetMovieError.KeywordTooShortError))
         }
 
         return movieRepository.getMovie(param.keyword, param.page)

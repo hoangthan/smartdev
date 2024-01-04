@@ -31,7 +31,7 @@ class GetMovieUseCaseTest {
         runBlocking {
             whenever(movieRepository.getMovie("Movie", 1)).thenReturn(flowOf())
             val actualResult = getMovieUseCase(GetMovieUseCase.GetMovieParam("M")).first()
-            val expectedResult = Either.Left(GetMovieError.KeywordTooShort)
+            val expectedResult = Either.Left(GetMovieError.KeywordTooShortError)
             assertTrue(actualResult == expectedResult)
         }
     }

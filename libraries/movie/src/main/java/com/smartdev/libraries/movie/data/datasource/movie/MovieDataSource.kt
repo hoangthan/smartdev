@@ -21,7 +21,7 @@ class MovieDataSource @Inject constructor(
 
             val result = response
                 .map { it.movies.filterNot(::shouldTakeMovie).map { movie -> movie.toDomain() } }
-                .mapLeft { GetMovieError.UnExpected(it.toString()) }
+                .mapLeft { GetMovieError.UnExpectedError(it.toString()) }
 
             emit(result)
         }

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="key_word_too_short">Keyword must be at least 3 characters.</string>
+    <string name="network_error">Internet connection error. Please check.</string>
+    <string name="unknown_error">There was an unexpected error.</string>
+</resources>

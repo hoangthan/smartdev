@@ -15,6 +15,7 @@ import com.smartdev.features.movie.MovieListViewModel.MovieListViewEvent
 import com.smartdev.features.movie.databinding.FragmentMovieListBinding
 import com.smartdev.features.movie.movielist.MovieListAdapter
 import com.smartdev.features.movie.movielist.MovieUi
+import com.smartdev.libraries.movie.domain.usecase.getMovie.GetMovieError
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -49,9 +50,17 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>() {
     private fun onLoadStateChanged(state: CombinedLoadStates) {
         val refresh = state.refresh
         binding.loadingView.isVisible = refresh is LoadState.Loading
-        if (refresh is LoadState.Error) {
-            showToast(refresh.error.message ?: refresh.error.toString())
+        if (refresh is LoadState.Error) showError(refresh.error as? GetMovieError)
+    }
+
+    private fun showError(getMovieError: GetMovieError?) {
+        val stringRes = when (getMovieError) {
+            is GetMovieError.KeywordTooShortError -> R.string.key_word_too_short
+            is GetMovieError.UnExpectedError -> R.string.network_error
+            null -> R.string.unknown_error
         }
+
+        showToast(getString(stringRes))
     }
 
     private fun onDataLoaded(pagingData: PagingData<MovieUi>) {
