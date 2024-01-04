@@ -5,6 +5,9 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+def localProperties = new Properties()
+localProperties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 android {
     namespace 'com.smartdev.libraries.movie'
     compileSdk 34
@@ -15,6 +18,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+        buildConfigField("String", "MOVIE_API_KEY", "\"${localProperties.getProperty("movieApiKey")}\"")
     }
 
     flavorDimensions "version"
