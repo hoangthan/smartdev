@@ -6,7 +6,7 @@ import arrow.core.Either
 import com.smartdev.libraries.movie.domain.usecase.getMovie.GetMovieUseCase
 import kotlinx.coroutines.flow.first
 
-class MoviePagingSource constructor(
+class MoviePagingSource(
     private val getMovieUseCase: GetMovieUseCase,
     private val query: String,
 ) : PagingSource<Int, MovieUi>() {
@@ -33,7 +33,12 @@ class MoviePagingSource constructor(
                 val nextKey = if (movies.isEmpty()) null else pageNumber + 1
                 LoadResult.Page(data = movies, prevKey = prevKey, nextKey = nextKey)
             }
+
             is Either.Left -> LoadResult.Error(Throwable(result.value.msg))
         }
+    }
+
+    companion object {
+        const val RESULT_PER_PAGE = 20
     }
 }

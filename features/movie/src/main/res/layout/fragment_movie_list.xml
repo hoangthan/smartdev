@@ -22,8 +22,7 @@
             style="@style/ThemeOverlay.Material3.TextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/red"
-            android:text="Marvel">
+            android:backgroundTint="@color/red">
 
             <requestFocus />
         </com.google.android.material.textfield.TextInputEditText>
