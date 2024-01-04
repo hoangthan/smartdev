@@ -9,6 +9,7 @@ import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.DefaultItemAnimator
 import com.smartdev.features.core.base.fragments.BaseFragment
+import com.smartdev.features.core.base.utils.boundWithViewLifeCycle
 import com.smartdev.features.core.base.utils.observeFlow
 import com.smartdev.features.core.base.utils.showToast
 import com.smartdev.features.movie.MovieListViewModel.MovieListViewEvent
@@ -21,8 +22,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MovieListFragment : BaseFragment<FragmentMovieListBinding>() {
 
-    private val movieListAdapter = MovieListAdapter()
     private val viewModel: MovieListViewModel by viewModels()
+    private val movieListAdapter by boundWithViewLifeCycle { MovieListAdapter() }
 
     override fun getViewBinding(inflater: LayoutInflater): FragmentMovieListBinding {
         return FragmentMovieListBinding.inflate(inflater)
