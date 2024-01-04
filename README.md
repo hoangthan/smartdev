@@ -1,8 +1,8 @@
 ## Demo
-
-![img.png](img.png)
-
 [Check the demo video](https://youtu.be/OOyx19SOcvc)
+
+## Setup
+Put the valid value for movieApiKey in local.properties by: movieApiKey={value}
 
 ## Architecture
 
