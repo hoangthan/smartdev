@@ -10,25 +10,10 @@ import com.smartdev.features.core.R
 import com.smartdev.features.movie.databinding.ItemMovieBinding
 import com.smartdev.features.movie.movielist.MovieListAdapter.MovieItemViewHolder
 
-val MOVIE_COMPARATOR = object : DiffUtil.ItemCallback<MovieUi>() {
-    override fun areItemsTheSame(oldItem: MovieUi, newItem: MovieUi): Boolean {
-        return oldItem.imdbID == newItem.imdbID
-    }
-
-    override fun areContentsTheSame(oldItem: MovieUi, newItem: MovieUi): Boolean {
-        return oldItem == newItem
-    }
-}
-
 class MovieListAdapter : PagingDataAdapter<MovieUi, MovieItemViewHolder>(MOVIE_COMPARATOR) {
 
-    private lateinit var inflater: LayoutInflater
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieItemViewHolder {
-        if (!::inflater.isInitialized) {
-            inflater = LayoutInflater.from(parent.context)
-        }
-
+        val inflater = LayoutInflater.from(parent.context)
         val binding = ItemMovieBinding.inflate(inflater, parent, false)
         return MovieItemViewHolder(binding)
     }
@@ -53,6 +38,18 @@ class MovieListAdapter : PagingDataAdapter<MovieUi, MovieItemViewHolder>(MOVIE_C
 
             binding.tvMovieYear.text = movie.year
             binding.tvMovieName.text = movie.title
+        }
+    }
+
+    companion object {
+        private val MOVIE_COMPARATOR = object : DiffUtil.ItemCallback<MovieUi>() {
+            override fun areItemsTheSame(oldItem: MovieUi, newItem: MovieUi): Boolean {
+                return oldItem.imdbID == newItem.imdbID
+            }
+
+            override fun areContentsTheSame(oldItem: MovieUi, newItem: MovieUi): Boolean {
+                return oldItem == newItem
+            }
         }
     }
 }

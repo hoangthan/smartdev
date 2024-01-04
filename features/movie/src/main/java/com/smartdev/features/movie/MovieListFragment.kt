@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import androidx.paging.PagingData
+import androidx.recyclerview.widget.DefaultItemAnimator
 import com.smartdev.features.core.base.fragments.BaseFragment
 import com.smartdev.features.core.base.utils.observeFlow
 import com.smartdev.features.core.base.utils.showToast
@@ -29,6 +30,7 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>() {
     override fun initView() {
         binding.rcvMovie.apply {
             adapter = movieListAdapter
+            itemAnimator = DefaultItemAnimator()
             setHasFixedSize(true)
         }
     }
