@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace 'com.smartdev.libraries.resource'
-    compileSdk 33
+    compileSdk 34
 
     flavorDimensions "version"
 
@@ -27,7 +27,7 @@ android {
 
     defaultConfig {
         minSdk 24
-        targetSdk 33
+        compileSdk 34
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
