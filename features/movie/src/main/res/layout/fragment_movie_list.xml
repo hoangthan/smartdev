@@ -4,29 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_background">
+    android:background="@color/light_background"
+    android:theme="@style/Theme.Material3.DayNight.NoActionBar">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/filledTextField"
+        <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textLayoutSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_regular"
-        android:backgroundTint="@color/red"
+        android:layout_marginTop="@dimen/margin_regular"
         android:hint="@string/enter_movie_name"
-        app:hintTextColor="@color/red"
-        app:layout_constraintStart_toStartOf="parent"
+        app:boxStrokeColor="@color/primary_color"
+        app:endIconMode="clear_text"
+        app:hintTextColor="@color/black"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtMovieName"
-            style="@style/ThemeOverlay.Material3.TextInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/red">
+            android:alpha="0.7"
+            android:maxLines="1"
+            android:textColor="@color/black" />
 
-            <requestFocus />
-        </com.google.android.material.textfield.TextInputEditText>
-
+        <requestFocus />
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -39,7 +40,7 @@
         android:scrollbars="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/filledTextField"
+        app:layout_constraintTop_toBottomOf="@+id/textLayoutSearch"
         tools:itemCount="10" />
 
     <com.smartdev.features.core.base.views.LoadingView
