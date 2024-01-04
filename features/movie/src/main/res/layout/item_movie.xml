@@ -58,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/margin_regular"
                     android:layout_marginVertical="@dimen/margin_medium"
-                    app:cardCornerRadius="32dp"
+                    app:cardCornerRadius="@dimen/corner_radius_regular"
                     app:contentPadding="@dimen/padding_medium"
                     app:contentPaddingLeft="@dimen/padding_regular"
                     app:contentPaddingRight="@dimen/padding_regular">
