@@ -15,11 +15,15 @@ class GetMovieUseCase @Inject constructor(
 ) : FlowUseCase<GetMovieParam, GetMovieError, List<Movie>> {
 
     override fun invoke(param: GetMovieParam): Flow<Either<GetMovieError, List<Movie>>> {
-        if (param.keyword.trim().length < MINIMUM_LENGTH) {
-            return flowOf(Either.Left(GetMovieError.KeywordTooShortError))
-        }
+        val keyword = param.keyword.trim()
 
-        return movieRepository.getMovie(param.keyword, param.page)
+        return if (keyword.isEmpty()) {
+            flowOf(Either.Right(emptyList()))
+        } else if (keyword.length < MINIMUM_LENGTH) {
+            flowOf(Either.Left(GetMovieError.KeywordTooShortError))
+        } else {
+            movieRepository.getMovie(param.keyword, param.page)
+        }
     }
 
     data class GetMovieParam(
