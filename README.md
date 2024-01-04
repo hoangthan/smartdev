@@ -2,7 +2,7 @@
 
 ![img.png](img.png)
 
-[Check the demo video](https://www.youtube.com/shorts/EYY2yJG1_Xo)
+[Check the demo video](https://youtu.be/OOyx19SOcvc)
 
 ## Architecture
 
